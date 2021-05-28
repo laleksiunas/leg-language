@@ -1,0 +1,57 @@
+fn fibonacciLoop(): int[]
+  let fibonacci = new int[10]
+
+  fibonacci[0] = 1
+  fibonacci[1] = 1
+
+  for (i in 2..fibonacci.length - 1)
+    fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2]
+
+  return fibonacci
+
+fn fibonacciRecursion(fibonacci: int[], index: int): int
+  if (index < 2)
+    return fibonacci[index]
+
+  fibonacci[index] = fibonacciRecursion(fibonacci, index - 1) + fibonacciRecursion(fibonacci, index - 2)
+
+  return fibonacci[index]
+
+fn fibonacciRecursion(): int[]
+  let fibonacci = new int[10]
+
+  fibonacci[0] = 1
+  fibonacci[1] = 1
+
+  fibonacciRecursion(fibonacci, fibonacci.length - 1)
+
+  return fibonacci
+
+fn printArray(numbers: int[]): void
+  for (i in 0..numbers.length - 1)
+    print(numbers[i])
+    print(" ")
+  println()
+
+fn openResultsFile(): File
+  return fileOpen("example.txt", "w")
+
+fn printArrayToFile(file: File, numbers: int[]): void
+  for (i in 0..numbers.length - 1)
+    fileWrite(file, numbers[i])
+    fileWrite(file, " ")
+  fileWriteln(file)
+
+fn main(): void
+  let loopResult = fibonacciLoop()
+  let recursionResult = fibonacciRecursion()
+
+  printArray(loopResult)
+  printArray(recursionResult)
+
+  let file = openResultsFile()
+
+  printArrayToFile(file, loopResult)
+  printArrayToFile(file, recursionResult)
+
+  fileClose(file)

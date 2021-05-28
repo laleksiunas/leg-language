@@ -1,0 +1,55 @@
+fn max(a: int, b: int): int
+  if (a > b)
+    return a
+  else
+    return b
+
+fn min(a: int, b: int): int
+  if (a < b)
+    return a
+  return b
+
+fn printNumber(number: int): void
+  if (number == 0)
+    println("Zero")
+  else if (number == 1)
+    println("One")
+  else if (number == 2)
+    println("Two")
+  else
+    print("Unknown number ")
+    print(number)
+    println()
+
+fn stringifyNumber(number: int): string
+  if (number == 0)
+    return "Zero"
+  else if (number == 1)
+    return "One"
+  else if (number == 2)
+    return "Two"
+  else
+    return "Unknown"
+
+fn main(): void
+  let x = 5
+
+  if (x > 6)
+    println("greater than 6")
+  else
+    println("less than 6")
+
+  printNumber(0)
+  printNumber(1)
+  printNumber(2)
+  printNumber(3)
+
+  println(stringifyNumber(0))
+  println(stringifyNumber(1))
+  println(stringifyNumber(2))
+  println(stringifyNumber(3))
+
+  println(max(5, 2))
+  println(max(2, 5))
+  println(min(5, 7))
+  println(min(7, 5))

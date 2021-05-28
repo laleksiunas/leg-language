@@ -1,0 +1,11 @@
+cmake-build-debug
+cmake-build-release
+.idea
+.DS_Store
+.conan
+
+src/compiler/generated
+src/preprocessor/generated
+
+# used in examples
+example.txt

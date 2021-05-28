@@ -1,0 +1,52 @@
+fn indexers(): void
+  let intArray = new int[5]
+  let floatArray = new float[6]
+  let boolArray = new bool[7]
+  let stringArray = new string[8]
+
+  println(intArray[0]) // 0
+  println(floatArray[0]) // 0.0
+  println(boolArray[0]) // 0
+  println(stringArray[0]) // empty string
+
+  intArray[0] = 1
+  floatArray[0] = 1.1
+  boolArray[0] = true
+  stringArray[0] = "str"
+
+  println(intArray[0]) // 1
+  println(floatArray[0]) // 1.1
+  println(boolArray[0]) // 1
+  println(stringArray[0]) // "str"
+  println()
+
+fn initialize(): void
+  let array = new int[] { 1, 2, 3, 4 }
+
+  println(array.length)
+
+  for (i in 0..array.length - 1)
+    println(array[i])
+
+  println()
+
+fn returningArray(): int[]
+  let array = new int[2]
+
+  array[0] = 1
+  array[1] = 2
+
+  return array
+
+fn receivingArray(array: int[]): void
+  println(array[0])
+  println(array[1])
+  println(array.length)
+
+fn main(): void
+  indexers()
+  initialize()
+
+  let array = returningArray()
+
+  receivingArray(array)

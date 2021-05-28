@@ -1,0 +1,25 @@
+fn returnNumber(): int
+  return 1
+
+fn returnFloat(): float
+  return 1.1
+
+fn returnString(): string
+  return "string"
+
+fn noop(): void
+  return
+
+fn gcd(a: int, b: int): int
+  if (b == 0)
+    return a
+  return gcd(b, a % b)
+
+fn main(): void
+  println(returnNumber())
+  println(returnFloat())
+  println(returnString())
+
+  noop()
+
+  println(gcd(24, 36))

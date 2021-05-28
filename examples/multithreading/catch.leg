@@ -1,0 +1,72 @@
+fn voidTask(): void
+  sleep(1)
+
+fn longIntTask(value: int): int
+  sleep(1)
+  return value
+
+fn longStringTask(): string
+  sleep(1)
+  return "string task"
+
+fn catchVoidTasks(): void
+  catch {
+    kick voidTask(),
+    kick longIntTask(1),
+    kick voidTask()
+  }
+
+  println("Finished void tasks")
+
+fn catchSingle(): void
+  result, = catch { kick longIntTask(2) }
+
+  print("Catch single result: ")
+  println(result)
+
+fn catchMultiple(): void
+  intResult, stringResult = catch {
+    kick longIntTask(3),
+    kick longStringTask()
+  }
+
+  print("Catch multiple results: ")
+  print(intResult)
+  print(", ")
+  print(stringResult)
+  println()
+
+fn catchMultipleWithVoid(): void
+  intResult, _, stringResult = catch {
+    kick longIntTask(4),
+    kick voidTask(),
+    kick longStringTask()
+  }
+
+  print("Catch multiple results with void: ")
+  print(intResult)
+  print(", ")
+  print(stringResult)
+  println()
+
+fn catchMultipleIgnoringResult(): void
+  _, _, result = catch {
+    kick longIntTask(5),
+    kick longIntTask(6),
+    kick longIntTask(7),
+    kick longIntTask(8),
+    kick longIntTask(9)
+  }
+
+  print("Catch multiple tasks ignoring output: ")
+  print(result)
+  println()
+
+fn main(): void
+  catchVoidTasks()
+  catchSingle()
+  catchMultiple()
+  catchMultipleWithVoid()
+  catchMultipleIgnoringResult()
+
+  println("Main end")

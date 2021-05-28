@@ -1,0 +1,17 @@
+fn main(): void
+  let x = 1
+
+  x += 3 // 4
+  x -= 2 // 2
+  x *= 8 // 16
+  x /= 2 // 8
+  x %= 3 // 2
+
+  println(x)
+
+  let y = true
+
+  y &&= false
+  y ||= true
+
+  println(y)

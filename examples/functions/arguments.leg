@@ -1,0 +1,24 @@
+fn printInt(value: int): void
+  println(value)
+
+fn printFloat(value: float): void
+  println(value)
+
+fn printString(value: string): void
+  println(value)
+
+fn map(value: int): int
+  return value
+
+fn printMultipleStrings(value1: string, value2: string): void
+  print(value1)
+  println(value2)
+
+fn main(): void
+  printInt(1)
+  printFloat(1.1)
+  printString("string")
+
+  println(map(11))
+
+  printMultipleStrings("string1", "string2")

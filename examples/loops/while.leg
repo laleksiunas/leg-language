@@ -1,0 +1,45 @@
+fn singleCondition(): void
+  int i = 10
+
+  while (i > 0)
+    print(i)
+    print(" ")
+    i -= 1
+
+  println()
+  println()
+
+fn multipleConditions(): void
+  int i = 10
+  float j = 0.0
+
+  while (i > 0 && j < 20.0)
+    print(i)
+    print(" ")
+    println(j)
+
+    i -= 1
+    j += 3
+
+  println()
+
+fn nestedLoops(): void
+  let i = 1
+
+  while (i < 6)
+    let j = 1
+
+    while (j < 6)
+      print(i)
+      print(j)
+      print(" ")
+
+      j += 1
+
+    i += 1
+    println()
+
+fn main(): void
+  singleCondition()
+  multipleConditions()
+  nestedLoops()

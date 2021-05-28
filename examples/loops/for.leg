@@ -1,0 +1,55 @@
+fn increasing(): void
+  for (i in 1..10)
+    print(i)
+    print(" ")
+  println()
+
+fn decreasing(): void
+  for (i in 10..1)
+    print(i)
+    print(" ")
+  println()
+
+fn stepValue(): void
+  for (i in 1..10:2)
+    print(i)
+    print(" ")
+  println()
+
+fn stepValueDecreasing(): void
+  for (i in 10..1:2)
+    print(i)
+    print(" ")
+  println()
+
+fn floatIncreasing(): void
+  for (i in 1.0..10.0)
+    print(i)
+    print(" ")
+  println()
+
+fn floatIncreasingWithStepValue(): void
+  for (i in 1.0..10.0:2)
+    print(i)
+    print(" ")
+  println()
+
+fn nestedLoop(): void
+  for (i in 1..5)
+    for (j in 1..5)
+      print(i)
+      print(j)
+      print(" ")
+    println()
+  println()
+
+fn main(): void
+  increasing()
+  decreasing()
+  stepValue()
+  stepValueDecreasing()
+
+  floatIncreasing()
+  floatIncreasingWithStepValue()
+
+  nestedLoop()

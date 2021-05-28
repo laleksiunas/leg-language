@@ -1,0 +1,33 @@
+fn longTask(): void
+  sleep(1)
+  println("Finished long task")
+
+fn longTaskWithArg(value: int): void
+  sleep(1)
+  print("Task with arg: ")
+  println(value)
+
+fn longTaskWithMultipleArgs(a: string, b: int): void
+  sleep(1)
+  print("Task with multiple args1: ")
+  println(a)
+  print("Task with multiple args2: ")
+  println(b)
+
+fn kickFromFunction(value: int): void
+  kick longTaskWithArg(value)
+
+fn kickFromFunctionMultipleArgs(a: string, b: int): void
+  kick longTaskWithMultipleArgs(a, b)
+
+fn main(): void
+  kick longTask()
+  kick longTaskWithArg(2)
+  kick longTaskWithArg(1)
+  kick longTaskWithMultipleArgs("value", 3)
+  kickFromFunctionMultipleArgs("value1", 5)
+  kickFromFunction(4)
+
+  sleep(2)
+
+  println("Main end")

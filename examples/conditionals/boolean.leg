@@ -1,0 +1,15 @@
+fn main(): void
+  println(true && true) // 1
+  println(false || true) // 1
+  println(false || true && true) // 1
+  println(false || (true && true)) // 1
+  println(false || true && false) // 0
+  println(false || (true && false)) // 0
+
+  println(false == false) // 1
+  println(false != false) // 0
+  println(1 == 1 && 1 != 1 + 1) // 1
+  println(5 > 1) // 1
+  println(4 + 1 >= 5) // 1
+  println(4.1 <= 8.1) // 1
+  println(4.1 < 5.1) //1

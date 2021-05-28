@@ -1,0 +1,42 @@
+fn intArithmetics(): void
+  let a = 2
+  let b = 5
+
+  println(a + b)
+  println(a - b)
+  println(b / a)
+  println(b * a)
+  println(b % a)
+  println()
+
+fn floatArithmetics(): void
+  let a = 1.1
+  let b = 2.5
+
+  println(a + b)
+  println(a - b)
+  println(b / a)
+  println(b * a)
+  println(b % a)
+  println()
+
+fn intAndFloatArithmetics(): void
+  let a = 2
+  let b = 3.5
+
+  println(a + b)
+  println(a - b)
+  println(b / a)
+  println(b * a)
+  println(b % a)
+  println()
+
+fn parenthesis(): void
+  println((1 + 2) * (3 + 2))
+  println()
+
+fn main(): void
+  intArithmetics()
+  floatArithmetics()
+  intAndFloatArithmetics()
+  parenthesis()

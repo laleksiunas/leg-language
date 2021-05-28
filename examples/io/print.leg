@@ -1,0 +1,10 @@
+fn main(): void
+  println("String")
+  println(1)
+  println(1.1)
+
+  println()
+
+  print("String")
+  print(1)
+  print(1.1)

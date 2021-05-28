@@ -1,0 +1,19 @@
+fn openTestFile(): File
+  return fileOpen("example.txt", "w")
+
+fn main(): void
+  let file = openTestFile()
+
+  fileWrite(file, 1)
+  fileWrite(file, 1.1)
+  fileWrite(file, true)
+  fileWrite(file, "string")
+
+  fileWriteln(file)
+
+  fileWriteln(file, 1)
+  fileWriteln(file, 1.1)
+  fileWriteln(file, true)
+  fileWriteln(file, "string")
+
+  fileClose(file)

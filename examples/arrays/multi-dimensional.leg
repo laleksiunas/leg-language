@@ -1,0 +1,19 @@
+fn main(): void
+  let twoD = new int[][5]
+  let threeD = new int[][][5]
+
+  println(twoD[0].length) // 0
+  println(threeD[0].length) // 0
+
+  twoD[0] = new int[] { 1, 2 }
+  threeD[0] = new int[][4]
+
+  println(twoD[0].length) // 2
+  println(threeD[0].length) // 4
+
+  threeD[0][0] = new int[] { 1, 2, 3 }
+
+  println(threeD[0][0].length) // 3
+
+  println(twoD[0][0] + twoD[0][1]) // 1 + 2
+  println(threeD[0][0][0] + threeD[0][0][1] + threeD[0][0][2]) // 1 + 2 + 3

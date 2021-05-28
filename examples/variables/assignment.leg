@@ -1,0 +1,37 @@
+fn specifyType(): void
+  int integer = 1
+  float decimal = 1.1
+  string str = "string1"
+
+  println(integer)
+  println(decimal)
+  println(str)
+
+  integer = 2
+  decimal = 2.2
+  str = "string2"
+
+  println(integer)
+  println(decimal)
+  println(str)
+
+fn inferType(): void
+  let integer = 3
+  let decimal = 3.3
+  let str = "string3"
+
+  println(integer)
+  println(decimal)
+  println(str)
+
+  integer = 4
+  decimal = 4.4
+  str = "string4"
+
+  println(integer)
+  println(decimal)
+  println(str)
+
+fn main(): void
+  specifyType()
+  inferType()
