@@ -10,6 +10,7 @@ namespace codegen::for_loop {
     auto DecrementOperatorName = operators::Minus;
     auto InRangeLowerOperatorName = operators::GreaterEqual;
     auto InRangeUpperOperatorName = operators::LessThanEqual;
+    auto NotEqualsOperatorName = operators::NotEqual;
 
     struct ForLoopBlocks {
         llvm::BasicBlock* body;
@@ -25,6 +26,7 @@ namespace codegen::for_loop {
         codegen::Operator decrement;
         codegen::Operator increasingInRange;
         codegen::Operator decreasingInRange;
+        codegen::Operator notEquals;
     };
 
     ForLoopBlocks createForLoopBlocks(llvm::Function* wrapperFunction) {
@@ -45,7 +47,8 @@ namespace codegen::for_loop {
             rangeType->getOperator(IncrementOperatorName, range.step->getType()).value(),
             rangeType->getOperator(DecrementOperatorName, range.step->getType()).value(),
             rangeType->getOperator(InRangeUpperOperatorName, range.type).value(),
-            rangeType->getOperator(InRangeLowerOperatorName, range.type).value()
+            rangeType->getOperator(InRangeLowerOperatorName, range.type).value(),
+            rangeType->getOperator(NotEqualsOperatorName, range.type).value(),
         };
     }
 
@@ -105,7 +108,7 @@ namespace codegen::for_loop {
             blocks.condition
         );
 
-        auto* loopCondition = codegen::Builder().CreateOr(
+        auto* loopVariableCondition = codegen::Builder().CreateOr(
             codegen::Builder().CreateAnd(
                 rangeOperators.increasingInRange(blocks.condition, range.begin, range.end),
                 rangeOperators.increasingInRange(blocks.condition, currentLoopValue, range.end)
@@ -116,7 +119,14 @@ namespace codegen::for_loop {
             )
         );
 
-        codegen::Builder().CreateCondBr(loopCondition, blocks.body, blocks.end);
+        auto* nonEmptyLoopCondition = rangeOperators.notEquals(blocks.condition, range.begin, range.end);
+
+        auto* loopTerminationCondition = codegen::Builder().CreateAnd(
+            loopVariableCondition,
+            nonEmptyLoopCondition
+        );
+
+        codegen::Builder().CreateCondBr(loopTerminationCondition, blocks.body, blocks.end);
     }
 }
 
@@ -220,6 +230,7 @@ shared::Range ast::ForNode::resolveRange(codegen::BlockContext& blockContext) {
 
     validateInRangeOperators(rangeType, codegen::for_loop::InRangeUpperOperatorName);
     validateInRangeOperators(rangeType, codegen::for_loop::InRangeLowerOperatorName);
+    validateInRangeOperators(rangeType, codegen::for_loop::NotEqualsOperatorName);
 
     return shared::Range {
         beginValue,
